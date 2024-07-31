@@ -24,6 +24,15 @@ app.post('/update', (req, res) => {
     res.status(200).send('Data received');
 });
 
+
+app.get('/status', (req, res) => {
+    console.log('status pinged');
+
+    // Broadcast the data to all connected WebSocket clients
+
+    res.status(200).send('Address up');
+});
+
 app.listen(port, () => {
     console.log(`HTTP server is running on http://localhost:${port}`);
 });
