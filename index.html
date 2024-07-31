@@ -270,17 +270,19 @@
             return countryMap.get(code) || 'Unknown country code';
         };
 
-        const socket = new WebSocket('ws://localhost:8080');
-
-        socket.addEventListener('open', function (event) {
-            console.log('Connected to the WebSocket server');
-        });
-
-        socket.addEventListener('message', function (event) {
-            console.log('Message from server ', event.data);
-            const data = JSON.parse(event.data);
-            updateHTML(data);
-        });
+        const interval = setInterval(function() {
+            console.log("Requesting data");
+            fetch('http://torbmepvwbdf01:3000/data').then(response => {
+                
+            }).then(responseData => {
+                console.log("Received data");
+                let data = JSON.parse(responseData);
+                updateHTML(data);
+                
+            }).catch(error => {
+                console.error("Errir while getting the data: " error);
+            });
+        }, 5000);
 
         function updateHTML(data) {
             // Update the title

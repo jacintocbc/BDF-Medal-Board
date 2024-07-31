@@ -5,7 +5,7 @@ const WebSocket = require('ws');
 const app = express();
 const port = 3000;
 const wss = new WebSocket.Server({ port: 8080 });
-
+let currentData = "";
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
@@ -14,13 +14,7 @@ app.post('/update', (req, res) => {
     const data = req.body;
     console.log('Received data:', data);
 
-    // Broadcast the data to all connected WebSocket clients
-    wss.clients.forEach(client => {
-        if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(data));
-        }
-    });
-
+     currentData = JSON.stringify(data);
     res.status(200).send('Data received');
 });
 
@@ -31,6 +25,10 @@ app.get('/status', (req, res) => {
     // Broadcast the data to all connected WebSocket clients
 
     res.status(200).send('Address up');
+});
+
+app.get('/data', (req, res)=> {
+    res.status(200).send(currentData);
 });
 
 app.listen(port, () => {
