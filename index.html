@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medal Standings Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="wrapper">
         <div class="container">
@@ -270,18 +272,15 @@
             return countryMap.get(code) || 'Unknown country code';
         };
 
-        const interval = setInterval(function() {
+        const interval = setInterval(function () {
             console.log("Requesting data");
-            fetch('http://torbmepvwbdf01:3000/data').then(response => {
-                
-            }).then(responseData => {
-                console.log("Received data");
-                let data = JSON.parse(responseData);
-                updateHTML(data);
-                
-            }).catch(error => {
-                console.error("Errir while getting the data: " error);
-            });
+            fetch('http://torbmepvwbdf01:3000/data').then(response => response.text())
+                .then((body) => {
+                    let data = JSON.parse(body);
+                    updateHTML(data);
+                }).catch(error => {
+                    console.error("Errir while getting the data: " + error);
+                });
         }, 5000);
 
         function updateHTML(data) {
@@ -331,4 +330,5 @@
         }
     </script>
 </body>
+
 </html>
