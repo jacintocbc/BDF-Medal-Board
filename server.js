@@ -24,6 +24,14 @@ app.post('/update', (req, res) => {
     res.status(200).send('Data received');
 });
 
+
+app.get('/status', (req, res) => {
+    console.log('Status endpoint pinged');
+
+
+    res.status(200).send('UP');
+});
+
 app.listen(port, () => {
     console.log(`HTTP server is running on http://localhost:${port}`);
 });
