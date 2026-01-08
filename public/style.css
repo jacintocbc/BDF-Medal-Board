@@ -1,11 +1,16 @@
 @font-face {
     font-family: 'Radio-Canada';
-    src: url('img/fonts/RadioCanada-Variable.ttf') format('truetype');
+    src: url('/fonts/RadioCanada-Variable.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Radio-Canada Italic';
-    src: url('img/fonts/RadioCanada-Italic-Variable.ttf') format('opentype');
+    src: url('/fonts/RadioCanada-Italic-Variable.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Radio-Canada Big';
+    src: url('/fonts/RadioCanadaBig-VariableFont.ttf') format('truetype');
 }
 
 body {
@@ -17,6 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #333333;
 }
 
 #background-video {
@@ -35,9 +41,8 @@ body {
 
 .container {
     height: 960px;
-    width: 1800px;
+    width: 1920px;
     overflow: hidden;
-    margin: 60px;
     position: relative;
 }
 
@@ -90,26 +95,33 @@ h2 {
 }
 
 .gradient {
-    height: 180px;
+    height: 245px;
     width: 100%;
-    background: white;
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(to right, white 5%, #fcf6e8 15%, #eed69a 30%, #e5be5f 68%, #daa521 90%);
+    background: rgb(35,88,166); /* Fallback for old browsers */
+    background: linear-gradient(
+        90deg, 
+        #215ab4 0%,    /* Deep Blue Start */
+        #3263bc 75%,   /* Mid-point to keep the left side bluer */
+        #9b82e1 100%   /* Lavender/Purple End */
+    );
 }
 
-.paris-logo {
-    height: 182px;
+.olympics-logo {
+    height: 135px;
     position: relative;
-    left: 23px;
-    top: -2px;
+    left: 164px;
+    top: 93px;
 }
 
 .header-text {
     position: absolute;
-    left: 220px;
-    top: 15px;
+    left: 307px;
+    top: 80px;
+    color: white;
+
 }
 
 .header-text h1 {
@@ -119,7 +131,7 @@ h2 {
     letter-spacing: -4.5px;
     position: relative;
     left: 2px;
-    color: #252525;
+    font-family: 'Radio-Canada Big', sans-serif;
 }
 
 .header-text h2 {
@@ -128,14 +140,14 @@ h2 {
     font-weight: 400;
     position: relative;
     top: -14px;
-    left: 5px;
+    left: 4px;
     letter-spacing: -0.5px;
 }
 
 /* Table */
 .table-container {
     height: 780px;
-    margin-top: 180px;
+    margin-top: 245px;
     position: relative;
 }
 
@@ -149,6 +161,8 @@ h2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 57px;
+    padding-right: 60px;
 }
 
 .alt {
@@ -169,17 +183,17 @@ h2 {
 
 .medal-icons {
     position: absolute;
-    right: -2px;
-    top: -2.5px;
+    right: 51px;
+    top: 4.5px;
     width: 545px;
 }
 
 .medal-icons img {
-    height: 70px;
+    height: 55px;
 }
 
 .m-right {
-    margin-right: 60px;
+    margin-right: 75px;
 }
 
 /* Row */
